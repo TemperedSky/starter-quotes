@@ -23,11 +23,19 @@ class Welcome extends Application
 		$authors = array ();
 		foreach ($source as $record)
 		{
-			$authors[] = array ('who' => $record['who'], 'mug' => $record['mug'], 'href' => $record['where']);
+			$authors[] = array ('who' => $record['who'], 'mug' => $record['mug'], 'what' => $record['what'], 'href' => $record['where']);
 		}
 		$this->data['authors'] = $authors;
 
 		$this->render();
 	}
-
+    
+    public function random()
+    {
+        $this->data['pagebody'] = 'homepage';
+        $source = $this->quotes->all();
+        $record = $source[rand(0,count($source))];
+        $this->data['authors'] = array ($record);
+        $this->render();
+    }
 }
