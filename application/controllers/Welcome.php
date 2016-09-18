@@ -34,7 +34,7 @@ class Welcome extends Application
     {
         $this->data['pagebody'] = 'homepage';
         $source = $this->quotes->all();
-        $record = $source[rand(0,count($source))];
+        $record = $source[rand(0,count($source) - 1)];
         $this->data['authors'] = array ($record);
         $this->render();
     }
